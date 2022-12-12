@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Customer</h2>
+
+<html>
+<head>
+    <title>Customer Form</title>
+</head>
+<body>
+    <form method="post">
+        <fieldset>
+            <div>
+                <label for="customername">Customer Name:</label>
+                <input type="text" name="customername" Value=" @Request.Form["customername"]" />
+                @Html.ValidationMessage("customername")
+            </div>
+            <div>
+                <label for="phone_no">Phone No.:</label>
+                <input type="text" name="phone_no" Value="@Request.Form["phone_no"]" />
+                @Html.ValidationMessage("phone_no")
+            </div>
+            <div>
+                <label for="card_no">Card No.:</label>
+                <input type="text" name="card_no" Value="@Request.Form["card_no"]" />
+                @Html.ValidationMessage("card_no")
+            </div>
+            <div>
+                <label> </label>
+                <input type="submit" value="Submit" class="submit" />
+            </div>
+        </fieldset>
+        <br>
+        @{
+            if (IsPost)
+            {
+                string customername = Request.Form["customername"];
+                string phone_no = Request.Form["phone_no"];
+                string card_no = Request.Form["card_no"];
+
+                <text>
+                    You entered: <br />
+                    Customer Name: @customername <br />
+                    Phone No.: @phone_no <br />
+                    Card No.: @card_no <br />
+                </text>
+            }
+        }
+    </form>
+</body>
